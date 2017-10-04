@@ -9,22 +9,41 @@
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+apply plugin: 'no.nils.wsdl2java'
 
-// In this section you declare where to find the dependencies of your project
+
 repositories {
-    // Use 'jcenter' for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
     jcenter()
 }
 
+buildscript{
+  repositories{
+      jcenter()
+  }
+  dependencies {
+      classpath 'no.nils:wsdl2java:0.10'
+  }
+}
+
+
 // In this section you declare the dependencies for your production and test code
 dependencies {
-    // The production code uses the SLF4J logging API at compile time
-    compile 'org.slf4j:slf4j-api:1.7.21'
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    compile 'log4j:log4j:1.2.17'
 
-    // Declare the dependency for your favourite test framework you want to use in your tests.
-    // TestNG is also supported by the Gradle Test task. Just change the
-    // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
-    // 'test.useTestNG()' to your build script.
+
+    compile 'org.apache.cxf:apache-cxf:3.1.9'
+
     testCompile 'junit:junit:4.12'
 }
+
+wsdl2java{
+  wsdlsToGenerate = [
+    ['-p','de.dumischbaenger.ws', '-autoNameResolution',"$projectDir/src/main/resources/META-INF/wsdl/ews.wsdl"]
+  ]
+  generatedWsdlDir = file("$projectDir/src/main/java")
+  wsdlDir = file("$projectDir/src/main/resources/META-INF/wsdl")
+}
+

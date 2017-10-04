@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <rewriteSystem systemIdStartString="http://www.w3.org/2001/xml.xsd" rewritePrefix="classpath:/schema/xml.xsd"/>
+    
+    <!--
+    <rewriteSystem systemIdStartString="http://apache.org/hello_world/schemas-in-separate-dir/" rewritePrefix="classpath:/wsdl/schemas/"/>
+    <rewriteSystem systemIdStartString="http://apache.org/hello_world/schemas-in-separate-dir-non-cp/" rewritePrefix="/wsdl/schemas/"/>
+    <rewriteSystem systemIdStartString="doesnotexist" rewritePrefix="../wsdl/catalog"/>
+    <rewriteSystem systemIdStartString="nopath" rewritePrefix="../wsdl"/>
+    <rewriteSystem systemIdStartString="testutils" rewritePrefix="classpath:/wsdl"/>
+    -->
+</catalog>
